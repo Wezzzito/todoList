@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>TODO List</title>
+    <link rel="stylesheet" href="extraT.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('#new-task').onsubmit = () => {
+                const cb = document.createElement("INPUT");
+                cb.setAttribute("type", "checkbox");
+                const li = document.createElement('li');
+                li.appendChild(cb);
+                li.innerHTML += document.querySelector('#task').value;
+                const removeBtn = document.createElement('button');
+                removeBtn.innerHTML = 'Eliminar';
+                removeBtn.onclick = function(){
+                  this.parentNode.remove();
+                };
+                li.appendChild(removeBtn);       
+                document.querySelector('#tasks').append(li);
+                document.querySelector('#task').value = '';
+                return false;
+            };
+        });
+    </script>
+</head>
+<body>
+    <div class="text">
+        <h2>Lista de Actividades</h2>
+        <h1>Tasks</h1>
+        <form id="new-task">
+            <input id="task" autocomplete="off" autofocus placeholder="Nueva Tarea" type="text">
+            <input type="submit">
+        </form>
+        <ol id="tasks">
+        </ol>
+    </div>
+</body>
+</html>
